@@ -1,5 +1,5 @@
 {
-    "name": "Python Dev",
+    "name": "Discord Bot Workspace",
     "build": {
       "dockerfile": "Dockerfile",
       "context": ".."
@@ -29,6 +29,6 @@
     },
     "workspaceFolder": "/workdir",
     "mounts": [
-      "source=${localWorkspaceFolder}/..,target=/workdir,type=bind"  // Mounts your local project to /workspace
+      "source=${localWorkspaceFolder},target=/workdir,type=bind"  // Mounts your local project to /workspace
     ]
 }
