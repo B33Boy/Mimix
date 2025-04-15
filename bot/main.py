@@ -58,9 +58,9 @@ async def on_message(message):
     Args:
         message (discord.Message): Discord message object
     """
-    if await validate_users(message):
-        if message.content.startswith(PREFIX):
-            prompt = message.content[len(PREFIX) :].strip()
+    if message.content.startswith(PREFIX):
+        if await validate_users(message):
+            prompt = message.content[len(PREFIX):].strip()
             if not prompt:
                 await message.reply("damn, bro's not even sending a question")
                 return
