@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  discord-bot:
+    build: .
+    env_file: .env
+    environment:
+      - OLLAMA_PORT=11434
+      - OLLAMA_MODEL=gemma3:4b
+      - OLLAMA_HOST=host.docker.internal
+    restart: unless-stopped
