@@ -1,6 +1,6 @@
 ## Scrape Messages 
 
-If you are running this script from the devcontainer:
+Enter the devcontainer, from the project directory run:
 
 ```sh
 python -m scripts.scrape_messages
