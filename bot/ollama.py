@@ -5,7 +5,7 @@ import httpx
 from bot.config import OLLAMA_MODEL, OLLAMA_URL, TIMEOUT
 
 
-async def query_ollama(prompt: str) -> str:
+async def process_prompt(prompt: str) -> str:
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
