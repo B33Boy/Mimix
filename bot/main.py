@@ -51,7 +51,7 @@ async def send_response(message: Message, response: str) -> None:
         await message.channel.send(response)
 
 
-async def get_messages_from_channel(ctx: Context, num_messages: int, authors: tuple[str] = []) -> AsyncGenerator[str, None]:
+async def get_messages_from_channel(ctx: Context, num_messages: int, authors: tuple[str]) -> AsyncGenerator[str, None]:
     counter = 0
     async for msg in ctx.channel.history(limit=LIMIT, oldest_first=False):
         if not authors or msg.author.name in authors:
@@ -104,6 +104,9 @@ async def scrape(ctx: Context, *args) -> None:
         return
     
     target_users: tuple[str] = args
+    if not target_users:
+        return
+    
     async for msg in get_messages_from_channel(ctx, NUM_MESSAGES, target_users):
         logging.info(msg) # save to db
 
