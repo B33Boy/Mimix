@@ -9,6 +9,6 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 VALID_USERS = os.getenv("VALID_USERS").split(',')
 
 # ==================================================== App Specific Config ====================================================
-PREFIX = '$hey '
+PREFIX = '$$ '
 TIMEOUT = 120.0  # seconds
 MAX_RESP_SIZE = 2000 # characters
