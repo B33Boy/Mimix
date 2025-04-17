@@ -9,3 +9,24 @@ services:
       - OLLAMA_MODEL=gemma3:4b
       - OLLAMA_HOST=host.docker.internal
     restart: unless-stopped
+    depends_on:
+      - vectordb
+    networks:
+      - bot_net
+  
+
+  vectordb:
+    image: chromadb/chroma
+    volumes:
+      - vectordb_volume:/data
+    ports:
+      - 8000:8000
+    networks:
+      - bot_net
+
+volumes:
+  vectordb_volume:
+
+networks:
+  bot_net:
+    driver: bridge
