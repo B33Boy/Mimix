@@ -17,6 +17,8 @@ services:
 
   vectordb:
     image: chromadb/chroma
+    environment:
+      - CHROMA_TELEMETRY_ENABLED=false
     volumes:
       - vectordb_volume:/data
     ports:
