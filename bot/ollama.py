@@ -2,7 +2,7 @@ import logging
 
 import httpx
 
-from bot.config import OLLAMA_MODEL, OLLAMA_URL, TIMEOUT
+from bot.config import OLLAMA_MODEL, OLLAMA_URL_CHAT, TIMEOUT
 
 
 async def process_prompt(prompt: str) -> str:
@@ -16,7 +16,7 @@ async def process_prompt(prompt: str) -> str:
             logging.debug(f"DEBUG: Sending payload: {payload}")
 
             response = await client.post(
-                OLLAMA_URL, json=payload, headers={"Content-Type": "application/json"}
+                OLLAMA_URL_CHAT, json=payload, headers={"Content-Type": "application/json"}
             )
             response.raise_for_status()  # handle response error code
             data = response.json()

@@ -3,7 +3,8 @@ import os
 # ==================================================== Env Vars ====================================================
 OLLAMA_HOST = os.getenv("OLLAMA_HOST", "host.docker.internal")
 OLLAMA_PORT = os.getenv("OLLAMA_PORT", "11434")
-OLLAMA_URL = f"http://{OLLAMA_HOST}:{OLLAMA_PORT}/api/chat"
+OLLAMA_URL_CHAT = f"http://{OLLAMA_HOST}:{OLLAMA_PORT}/api/chat"
+OLLAMA_URL_EMBED = f"http://{OLLAMA_HOST}:{OLLAMA_PORT}/api/embed"
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL")
 DISCORD_TOKEN = str(os.getenv("DISCORD_TOKEN"))
 VALID_USERS = str(os.getenv("VALID_USERS")).split(',')
