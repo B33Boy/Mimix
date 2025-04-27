@@ -3,6 +3,7 @@
 ![CI Status](https://github.com/B33Boy/Mimix/actions/workflows/ci.yml/badge.svg)
 
 ---
+![Hands](hands.jpg)
 
 For optimal performance, ensure that Ollama is running on the host system (e.g., ollama serve). Running Ollama inside a container on Windows or Mac may result in performance degradation.
 
