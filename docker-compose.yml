@@ -6,28 +6,15 @@ services:
     env_file: .env
     environment:
       - OLLAMA_PORT=11434
-      - OLLAMA_MODEL=gemma3:4b
+      - OLLAMA_MODEL=qwen2.5:7b
       - OLLAMA_HOST=host.docker.internal
     restart: unless-stopped
-    depends_on:
-      - vectordb
+    volumes:
+      - ./data:/app/data
     networks:
       - bot_net
   
 
-  vectordb:
-    image: chromadb/chroma
-    environment:
-      - CHROMA_TELEMETRY_ENABLED=false
-    volumes:
-      - vectordb_volume:/data
-    ports:
-      - 8000:8000
-    networks:
-      - bot_net
-
-volumes:
-  vectordb_volume:
 
 networks:
   bot_net:

@@ -5,10 +5,15 @@ import httpx
 from bot.config import OLLAMA_MODEL, OLLAMA_URL_CHAT, TIMEOUT
 
 
-async def process_prompt(prompt: str) -> str:
+async def process_prompt(prompt: str, system: str | None = None) -> str:
+    messages = []
+    if system:
+        messages.append({"role": "system", "content": system})
+    messages.append({"role": "user", "content": prompt})
+
     payload = {
         "model": OLLAMA_MODEL,
-        "messages": [{"role": "user", "content": prompt}],
+        "messages": messages,
         "stream": False,
     }
     try:
@@ -16,7 +21,8 @@ async def process_prompt(prompt: str) -> str:
             logging.debug(f"DEBUG: Sending payload: {payload}")
 
             response = await client.post(
-                OLLAMA_URL_CHAT, json=payload, headers={"Content-Type": "application/json"}
+                OLLAMA_URL_CHAT, json=payload, headers={
+                    "Content-Type": "application/json"}
             )
             response.raise_for_status()  # handle response error code
             data = response.json()
